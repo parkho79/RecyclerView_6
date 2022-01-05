@@ -99,7 +99,8 @@ public class PhMainActivity extends AppCompatActivity {
                 mItemList.add(new PhRecyclerItem(R.drawable.emoji_u1f605, "emoji_u1f605 " + mItemList.size()));
 
                 // List 반영
-                mRecyclerAdapter.notifyDataSetChanged();
+                // mRecyclerAdapter.notifyDataSetChanged();
+                mRecyclerAdapter.notifyItemInserted(mItemList.size());
             }
         });
     }
@@ -120,11 +121,13 @@ public class PhMainActivity extends AppCompatActivity {
                 // Recycler item 수정
                 recyclerItem.setName(recyclerItem.getName() + " is modified");
 
+                // List 반영
+                // mRecyclerAdapter.notifyDataSetChanged();
+                final int checkedPosition = mRecyclerAdapter.getCheckedPosition();
+                mRecyclerAdapter.notifyItemChanged(checkedPosition);
+
                 // 선택 항목 초기화
                 mRecyclerAdapter.clearSelected();
-
-                // List 반영
-                mRecyclerAdapter.notifyDataSetChanged();
             }
         });
     }
@@ -145,11 +148,13 @@ public class PhMainActivity extends AppCompatActivity {
                 // 선택한 item 삭제
                 mItemList.remove(recyclerItem);
 
+                // List 반영
+                // mRecyclerAdapter.notifyDataSetChanged();
+                final int checkedPosition = mRecyclerAdapter.getCheckedPosition();
+                mRecyclerAdapter.notifyItemRemoved(checkedPosition);
+
                 // 선택 항목 초기화
                 mRecyclerAdapter.clearSelected();
-
-                // List 반영
-                mRecyclerAdapter.notifyDataSetChanged();
             }
         });
     }

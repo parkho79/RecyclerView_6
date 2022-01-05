@@ -67,6 +67,10 @@ public class PhRecyclerViewAdapter extends RecyclerView.Adapter<PhRecyclerViewHo
         return null;
     }
 
+    public int getCheckedPosition() {
+        return mCheckedPosition;
+    }
+
     public void clearSelected() {
         mCheckedPosition = -1;
     }
